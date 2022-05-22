@@ -32,16 +32,15 @@ def eulerForward(V0, U0):
     V[0] = V0
     U = np.zeros(len(x))
     U[0] = U0
-    I = np.zeros(len(x))
     I = IValues(_I)
-    for iter in range(1, len(x)):
-        if (V[iter - 1] >= 30):
-            V[iter] = c
-            U[iter] = U[iter - 1] + d
-            V[iter - 1] = 30
+    for i in range(1, len(x)):
+        if (V[i - 1] >= 30):
+            V[i] = c
+            U[i] = U[i - 1] + d
+            V[i - 1] = 30
         else:
-            V[iter] = V[iter - 1] + h * ecuacion1(V[iter - 1], U[iter - 1], I[iter - 1])
-            U[iter] = U[iter - 1] + h * ecuacion2(V[iter - 1], U[iter - 1])
+            V[i] = V[i - 1] + h * ecuacion1(V[i - 1], U[i - 1], I[i - 1])
+            U[i] = U[i - 1] + h * ecuacion2(V[i - 1], U[i - 1])
     return V, U
 
 
